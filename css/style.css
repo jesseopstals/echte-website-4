@@ -12,26 +12,57 @@
   --form-text: hsl(0, 0%, 0%);
 }
 
+@media only screen and (max-width: 600px) {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .login {
+    margin-top: 50%;
+    width: 200px;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-ul{
+/* width */
+::-webkit-scrollbar {
+  background: #0044d8;
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #00ffdd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #2691d9;
+  border-radius: 5px;
+}
+
+ul {
+  color: white;
   display: flex;
   justify-content: flex-end;
-  position: absolute;
   width: 100%;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: #333;
 }
 
 li {
-  padding-left: 2%;
+  padding-left: 1%;
 }
 
 li a {
@@ -49,8 +80,8 @@ li a:hover {
 
 body {
   font-family: var(--body-font);
-  background-color: var(--body-color);
-  color: var(--text-color); 
+  background: linear-gradient(0deg, rgba(38,145,217,1) 0%, rgba(45,253,230,1) 100%);
+  color: var(--nav-color); 
 
 }
 
@@ -61,56 +92,52 @@ body {
   align-items: center;
   text-align: center;
   min-height: 100vh;
-  }
-
-.container h1{
-  padding-top: 7%;
 }
 
-.login{
+.container h1{
+  padding-top: 5%;
+}
+
+.login {
+  box-shadow: var(--shadow-color);
+  margin-top: 15%;
+  width: 100%;
   position: absolute;
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 400px;
   background: white;
   color: var(--form-text);
-  border-radius: 10px;
-  }
+  border-radius: 2%;
+}
 
 .login h1{
   text-align: center;
-  padding: 0 0 20px 0;
-  border-bottom: 1px solid silver;
-  }
+  padding: 5%;
+}
 
 .container form{
-  padding:0 40px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
 form .txt_field{
   position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 30px 0;
+  margin: 30px;
 }
 
 .txt_field input{
   width: 100%;
-  padding: 0 5px;
-  height: 40px;
+  /* padding: 0 5px; */
+  /* margin: 0 0 10px; */
+  height: 50px;
   font-size: 16px;
   border: none;
   background: none;
   outline: none;
 }
 
-.txt_field label{
-  position:absolute;
-  top: 50%;
-  left: 5px;
+.txt_field label {
+  /* left: 5px; */
   color: #adadad;
-  transform: translateY(-50%);
   font-size: 16px;
   pointer-events: none;
   transition: .5s;
@@ -119,9 +146,11 @@ form .txt_field{
 .txt_field span::before{
   content: '';
   position: absolute;
-  top: 50px;
+  /* top: 100px; */
   left: 0;
-  width: 0%;
+  bottom: 0;
+  /* width: 0%; */
+  /* width: 10px; */
   height: 2px;
   background: #2691d9;
 }

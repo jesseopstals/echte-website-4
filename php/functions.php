@@ -1,41 +1,62 @@
 <?php
-
 //--------------------------------------------------------------Login functions--------------------------------------------------------
 
+class User {
 
-function emptyCheck($userName,$pwd){
-$result;
-  if(empty($userName) || empty($pwd)){
-      $result = true;
-  }
-   else{
-       $result = false;
-   }
-   return $result;
+    // Properties of what a user can have
+    public $afdeling;
+    public $project_naam;
+    public $datum;
+    public $aantal_uur;
+  
+    // constructor so i can spare some lines of code
+    function __construct($afdeling, $project_naam, $datum, $aantal_uur) {
+        $this->afdeling = $afdeling;
+        $this->project_naam = $project_naam;
+        $this->datum = $datum;
+        $this->aantal_uur = $aantal_uur;
+    }
+}
+
+function emptyCheck($userName,$pwd) {
+
+    $result;
+
+    if(empty($userName) || empty($pwd)) {
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
 }
 
 
-function uidExists($conn,$userName){
-$stmt = mysqli_stmt_init($conn);
-$sql = "SELECT * FROM medewerker WHERE email = ? " ;         //zorgt ervoor dat hij alles selecteert van naam bij medewerker
-if(!mysqli_stmt_prepare($stmt,$sql)){
-    print"stmt failed";
-    exit();
-}
-   mysqli_stmt_bind_param($stmt,"s",$userName);             //zoekt ingevuled naam in database
-   mysqli_stmt_execute($stmt);                              //selecteert hele row
+function uidExists($conn,$userName) {
 
- $resultData = mysqli_stmt_get_result($stmt);
-  if($row = mysqli_fetch_assoc($resultData)){           
-   return $row;
+    $stmt = mysqli_stmt_init($conn);
+    $sql = "SELECT * FROM medewerker WHERE email = ? ";      //zorgt ervoor dat hij alles selecteert van naam bij medewerker
 
-  }
-else{
-$result = false;
-return $result;
+    if(!mysqli_stmt_prepare($stmt,$sql)){
+        print "stmt failed";
+        exit();
+    }
 
-}
-mysqli_stmt_close($stmt);
+    mysqli_stmt_bind_param($stmt,"s",$userName);             //zoekt ingevuled naam in database
+    mysqli_stmt_execute($stmt);                              //selecteert hele row
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if($row = mysqli_fetch_assoc($resultData)){           
+        return $row;
+
+    }
+    else {
+        $result = false;
+        return $result;
+
+    }
+    mysqli_stmt_close($stmt);
 }
 
 
@@ -50,16 +71,16 @@ function loginUser($conn,$userName,$pwd){
 $pwdDB = $uidExists["password"];                        //geeft pwddb de waarde van wahtwoord in database
 $checkpwd = $pwd == $pwdDB ? true : false;              //checkt database ww met ingevulde ww
 
-if($checkpwd === false){
+if($checkpwd === false) {
     header("location:../views/index.php?error=wrongpassword");
     exit();
 }
- else if ($checkpwd === true){
-     session_start();
-     $_SESSION['userid'] = $uidExists["id"];
-     $_SESSION['userName'] = $uidExists["email"];
-     header("location:../views/clockin.php?ok");
-     exit();
+ else if ($checkpwd === true) {
+    session_start();
+    $_SESSION['userid'] = $uidExists["id"];
+    $_SESSION['userName'] = $uidExists["email"];
+    header("location:../views/clockin.php?");
+    exit();
  }
 
 
@@ -67,29 +88,24 @@ if($checkpwd === false){
 
 
 //------------------------------------------------Register-----------------------------------------
-class User {
 
-    // Properties of what a user can have
-    public $name;
-    public $email;
-    public $password;
-    public $afdeling;
-    public $project_naam;
-    public $datum;
-    public $aantal_uur;
-  
-    // constructor so i can spare some lines of code
-    function __construct($name, $email, $password, $afdeling, $project_naam, $datum, $aantal_uur) {
-        $this->name = $name;
-        $this->email = $email;
-        $this->password = $password;
-        $this->afdeling = $afdeling;
-        $this->project_naam = $project_naam;
-        $this->datum = $datum;
-        $this->aantal_uur = $aantal_uur;
+function db() {
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    
+    // Create connection
+    $conn = new mysqli($servername, $username, $password);
+    
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
     }
+    echo "Connected successfully";    
 }
-function storeData() {
+
+function StoreData() {
+
     // use the connection in as an variable 
     $conn = db();
     
@@ -97,7 +113,7 @@ function storeData() {
     $user = new User($afdeling, $project_naam, $datum, $aantal_uur);
 
     $sql = "INSERT INTO `medewerker` (`afdeling`, `project_naam`, `datum`, `aantal_uren`) 
-    VALUES ($user->name , $user->email , $user->password , $user->afdeling , $user->project_naam , $user->datum , $user->aantal_uur)";
+    VALUES ($user->afdeling , $user->project_naam , $user->datum , $user->aantal_uur)";
  
     // if the query to store is correct it will pass if not it will return an error to the user
     if ($conn->query($sql) != TRUE) {
@@ -108,7 +124,7 @@ function storeData() {
 }
 
 
-function displayData() {
+function DisplayData() {
     $conn = db();
 
     $sql = "SELECT * FROM `medewerker`";

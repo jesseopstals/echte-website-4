@@ -1,12 +1,18 @@
 <?php
-
 session_unset();
 session_start();
 session_destroy();
+
+if (isset($_SESSION['userName'])){
+    header("location:clockin.php");
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="../Images/Gilde.png" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,20 +29,20 @@ session_destroy();
         </ul>
     </nav>
     <div class="container">
-        <h1 style="font-size: 50px">Welcome, <br> Login to register your work! </h1>
+        <h1>Welcome, <br> Login to register your work! </h1>
 
         <div class="login">
-            <h1>Login<h1>
-            <form action='../php/login.php' method ="post">
+            <h1>Login</h1>
+            <form action='../php/login.php' method="post">
             <div class="txt_field">
+            <label>Email</label>
                 <input type="text" name="email">
                 <span></span>
-                <label>Email</label>
             </div>
             <div class="txt_field">
+            <label>Password</label>
                 <input type="password" name="password">
                 <span></span>
-                <label>Password</label>
             </div>
             <div class="error">
             <?php
