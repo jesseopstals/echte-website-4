@@ -6,6 +6,7 @@ if(isset($_POST["submit"])){
     
 
     require "functions.php";
+    require "db.connection.php";
 
     if(emptyCheck($userName,$pwd) !== false){
        header("location:../views/index.php?error=emptyinput");

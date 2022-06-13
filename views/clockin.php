@@ -37,25 +37,25 @@ header("location:index.php");
            <h1 style="padding: 1%">Clock in</h1>
             <form method ="post">
                 <div style="display: flex;">
-                    <div class="txt_field" style="width: 100%">
+                    <div class="txt_field">
                         <label>Department</label>
                         <input type="text" name="afdeling">
                         <span></span>
                     </div>
-                    <div class="txt_field" style="width: 100%">
+                    <div class="txt_field">
                         <label>Project</label>
                         <input type="text" name="project">
                         <span></span>
                     </div>
                 </div>
                 <div style="display: flex;">
-                    <div class="txt_field" style="width: 100%">
+                    <div class="txt_field">
                         <label>Date</label>
                         <input type="Date" name="date">
                         <span></span>
                     </div>
-                    <div class="txt_field" style="width: 100%">
-                        <label>Amount of hours</label>
+                    <div class="txt_field">
+                        <label>Amount of Hours</label>
                         <input type="Number" name="uur">
                         <span></span>
                     </div>
