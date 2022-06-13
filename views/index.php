@@ -2,11 +2,6 @@
 session_unset();
 session_start();
 session_destroy();
-
-if (isset($_SESSION['userName'])){
-    header("location:clockin.php");
-}
-
 ?>
 
 <!DOCTYPE html>

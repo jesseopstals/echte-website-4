@@ -4,7 +4,7 @@ if(isset($_POST["submit"])){
     $userName= $_POST['email'];
     $pwd= $_POST['password'];
     
-    require_once "db.connection.php";
+
     require "functions.php";
 
     if(emptyCheck($userName,$pwd) !== false){
@@ -17,6 +17,6 @@ if(isset($_POST["submit"])){
  
  }
  else {
-     header("location:../views/index.php");
+     header("location:../views/index.php?");
      exit();
  }

@@ -1,16 +1,12 @@
 <?php
-
 session_start();
+if(isset($_SESSION['userName'])){
 
-// if(isset($_POST["submit"])){
-//     header("location:clockin.php");
-// } 
-// else {
-//     header("location:clockin.php");
-// }
+} 
+else{
+header("location:index.php");
 
-include "../php/login.php";
-
+}
 ?>
 
 <!DOCTYPE html>

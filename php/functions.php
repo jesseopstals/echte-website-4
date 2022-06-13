@@ -1,22 +1,7 @@
 <?php
 //--------------------------------------------------------------Login functions--------------------------------------------------------
 
-class User {
 
-    // Properties of what a user can have
-    public $afdeling;
-    public $project_naam;
-    public $datum;
-    public $aantal_uur;
-  
-    // constructor so i can spare some lines of code
-    function __construct($afdeling, $project_naam, $datum, $aantal_uur) {
-        $this->afdeling = $afdeling;
-        $this->project_naam = $project_naam;
-        $this->datum = $datum;
-        $this->aantal_uur = $aantal_uur;
-    }
-}
 
 function emptyCheck($userName,$pwd) {
 
@@ -88,20 +73,37 @@ if($checkpwd === false) {
 
 
 //------------------------------------------------Register-----------------------------------------
+class User {
+
+    // Properties of what a user can have
+    public $afdeling;
+    public $project_naam;
+    public $datum;
+    public $aantal_uur;
+  
+    // constructor so i can spare some lines of code
+    function __construct($afdeling, $project_naam, $datum, $aantal_uur) {
+        $this->afdeling = $afdeling;
+        $this->project_naam = $project_naam;
+        $this->datum = $datum;
+        $this->aantal_uur = $aantal_uur;
+    }
+}
 
 function db() {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password);
-    
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";    
+$servername = "localhost";
+$username = "urenregistratiesysteem";
+$password = "";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+  
 }
 
 function StoreData() {
