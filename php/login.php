@@ -17,6 +17,6 @@ if(isset($_POST["submit"])){
  
  }
  else {
-     header("location:../views/index.php");
+     header("location:../views/index.php?");
      exit();
  }

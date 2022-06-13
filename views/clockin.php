@@ -1,15 +1,13 @@
 <?php
 
 session_start();
+if(isset($_SESSION['userName'])){
 
-// if(isset($_POST["submit"])){
-//     header("location:clockin.php");
-// } 
-// else {
-//     header("location:clockin.php");
-// }
+} 
+else{
+header("location:index.php");
 
-include "../php/login.php";
+}
 
 ?>
 
@@ -27,7 +25,7 @@ include "../php/login.php";
 <body onload="startTime()">
     <nav>
         <ul>
-            <li ><a class="logout" href="../php/logout.php">logout</a></li>
+            <!-- <li ><a class="logout" href="../php/logout.php">logout</a></li> -->
             <li><p id="clock" class="clock"></p></li>
             <li><p id="date" class="date"></p></li>
         </ul>
@@ -36,30 +34,33 @@ include "../php/login.php";
         <h1>Welcome, <br> To your most relaible clock-in website! </h1>
 
         <div class="login">
-           <h1>Login<h1>
+           <h1 style="padding: 1%">Clock in</h1>
             <form method ="post">
-                <div class="txt_field">
-                    <input type="text" name="afdeling">
-                    <span></span>
-                    <label>Department</label>
+                <div style="display: flex;">
+                    <div class="txt_field" style="width: 100%">
+                        <label>Department</label>
+                        <input type="text" name="afdeling">
+                        <span></span>
+                    </div>
+                    <div class="txt_field" style="width: 100%">
+                        <label>Project</label>
+                        <input type="text" name="project">
+                        <span></span>
+                    </div>
                 </div>
-                <div class="txt_field">
-                    <input type="text" name="project">
-                    <span></span>
-                    <label>Project</label>
+                <div style="display: flex;">
+                    <div class="txt_field" style="width: 100%">
+                        <label>Date</label>
+                        <input type="Date" name="date">
+                        <span></span>
+                    </div>
+                    <div class="txt_field" style="width: 100%">
+                        <label>Amount of hours</label>
+                        <input type="Number" name="uur">
+                        <span></span>
+                    </div>
                 </div>
-                <div class="txt_field">
-                    <input type="Date" name="date">
-                    <span></span>
-                    <label>Date</label>
-                </div>
-                <div class="txt_field">
-                    <input type="Number" name="uur">
-                    <span></span>
-                    <label>Amount of hours</label>
-                </div>
-                    <?php StoreData() ?>
-                <input type="submit" value="Login" name="submit">    
+                <input type="submit" value="Clock in" name="submit">    
             </form>
         </div>
 </div>

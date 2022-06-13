@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 /* flexbox zorgt ervoor dat alle elements automatisch responsive worden */
-/*hallO!!!!!!!!!!! */
 /* css variables */
 :root {
   --text-color: hsl(0, 0%, 100%);
@@ -12,19 +11,22 @@
   --form-text: hsl(0, 0%, 0%);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 950px) {
+
   ul {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
   }
+
+  nav {
+    width: 100%;
+  }
+
   .login {
-    margin-top: 50%;
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
   }
-  h1 {
-    font-size: 1.3rem;
-  }
+
 }
 
 * {
@@ -80,6 +82,7 @@ li a:hover {
 
 body {
   font-family: var(--body-font);
+  background-repeat: no-repeat;
   background: linear-gradient(0deg, rgba(38,145,217,1) 0%, rgba(45,253,230,1) 100%);
   color: var(--nav-color); 
 
@@ -100,10 +103,9 @@ body {
 
 .login {
   box-shadow: var(--shadow-color);
-  margin-top: 15%;
-  width: 100%;
+  margin-top: 250px;
   position: absolute;
-  width: 400px;
+  width: 500px;
   background: white;
   color: var(--form-text);
   border-radius: 2%;
@@ -194,6 +196,8 @@ input[type="submit"]:hover{
 }
 
 html {
+  margin: 0;
+  padding: 0;
   scroll-behavior: smooth;
 }
 

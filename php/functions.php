@@ -68,13 +68,13 @@ function loginUser($conn,$userName,$pwd){
         header("location:../views/index.php?error=usernamenotfound");
         exit();
     }
-$pwdDB = $uidExists["password"];                        //geeft pwddb de waarde van wahtwoord in database
-$checkpwd = $pwd == $pwdDB ? true : false;              //checkt database ww met ingevulde ww
+    $pwdDB = $uidExists["password"];                        //geeft pwddb de waarde van wahtwoord in database
+    $checkpwd = $pwd == $pwdDB ? true : false;              //checkt database ww met ingevulde ww
 
-if($checkpwd === false) {
-    header("location:../views/index.php?error=wrongpassword");
-    exit();
-}
+    if($checkpwd === false) {
+        header("location:../views/index.php?error=wrongpassword");
+        exit();
+    }
  else if ($checkpwd === true) {
     session_start();
     $_SESSION['userid'] = $uidExists["id"];
@@ -136,7 +136,7 @@ function DisplayData() {
       // output data of each row of your database
       while($row = $result->fetch_assoc()) {
 
-        // echo your items in here
+
 
       }
     }
