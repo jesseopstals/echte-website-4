@@ -11,34 +11,6 @@
   --form-text: hsl(0, 0%, 0%);
 }
 
-@media only screen and (max-width: 950px) {
-
-  ul {
-    width: 100%;
-  }
-
-  nav {
-    width: 100%;
-  }
-
-  .login div {
-    width: 84%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* span {
-    width: 50%;
-  } */
-
-  .login {
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-  }
-
-}
-
 html, body{min-height:100%;}
 body{height:100vh;}
 
@@ -186,7 +158,7 @@ form .txt_field{
   width: 100%;
 }
 
-input[type="submit"]{
+#submit{
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -206,6 +178,7 @@ input[type="submit"]:hover{
 
 .clock {
   font-size: 2rem;
+  
   
 }
 
@@ -232,3 +205,30 @@ html {
 
 
 
+@media only screen and (max-width: 950px) {
+
+  ul {
+    width: 100%;
+  }
+
+  nav {
+    width: 100%;
+  }
+
+  .login div {
+    width: 84%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* span {
+    width: 50%;
+  } */
+
+  .login {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+
+}

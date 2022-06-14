@@ -35,36 +35,37 @@ header("location:index.php");
 
         <div class="login">
            <h1 style="padding: 1%">Clock in</h1>
-            <form method ="post">
+            <form>
                 <div style="display: flex;">
                     <div class="txt_field">
                         <label>Department</label>
-                        <input type="text" name="afdeling">
+                        <input type="text" id="department" name="afdeling">
                         <span></span>
                     </div>
                     <div class="txt_field">
                         <label>Project</label>
-                        <input type="text" name="project">
+                        <input type="text" id="project" name="project">
                         <span></span>
                     </div>
                 </div>
                 <div style="display: flex;">
                     <div class="txt_field">
                         <label>Date</label>
-                        <input type="Date" name="date">
+                        <input type="Date" id="dateDB" name="date" >
                         <span></span>
                     </div>
                     <div class="txt_field">
                         <label>Amount of Hours</label>
-                        <input type="Number" name="uur">
+                        <input type="Number" id="hours" name="uur">
                         <span></span>
                     </div>
                 </div>
-                <input type="submit" value="Clock in" name="submit">    
+                <input value="Clock in" id="submit" name="submit">    
             </form>
         </div>
 </div>
 
     <script src="../js/clock.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 </body>
 </html>
