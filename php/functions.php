@@ -1,14 +1,14 @@
 <?php
 //--------------------------------------------------------------Login functions--------------------------------------------------------
 
-function emptyCheck($userName,$pwd) {
+function emptyCheck($userName, $pwd) {
 
     $result;
 
     if(empty($userName) || empty($pwd)) {
         $result = true;
     }
-    else{
+    else {
         $result = false;
     }
     return $result;
@@ -44,7 +44,7 @@ function uidExists($conn,$userName) {
 
 
 
-function loginUser($conn,$userName,$pwd){
+function loginUser($conn,$userName,$pwd) {
  $uidExists = uidExists($conn,$userName);
 
     if($uidExists === false){
@@ -58,13 +58,14 @@ function loginUser($conn,$userName,$pwd){
         header("location:../views/index.php?error=wrongpassword");
         exit();
     }
- else if ($checkpwd === true) {
-    session_start();
-    $_SESSION['userid'] = $uidExists["id"];
-    $_SESSION['userName'] = $uidExists["email"];
-    header("location:../views/clockin.php?");
-    exit();
+    else if ($checkpwd === true) {
+        session_start();
+        $_SESSION['userid'] = $uidExists["id"];
+        $_SESSION['userName'] = $uidExists["email"];
+        header("location:../views/clockin.php?");
+        exit();
  }
+}
 
 
 
@@ -78,7 +79,7 @@ class User {
     public $project;
     public $datum;
     public $uur;
-  
+
     // constructor so i can spare some lines of code
     function __construct($afdeling, $project, $datum, $uur) {
         $this->afdeling = $afdeling;
@@ -89,22 +90,29 @@ class User {
 }
 
 function db() {
-$servername = "localhost";
-$username = "urenregistratiesysteem";
-$password = "";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "urenregistratiesysteem";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-  
+    // Check connection
+    if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+    }
+
+    return $conn;
 }
 
 function StoreData() {
+
+    $afdeling = $_POST['afdeling'];
+    $project = $_POST['project'];
+    $datum = $_POST['datum'];
+    $uur = $_POST['uur'];
+
 
     // use the connection in as an variable 
     $conn = db();
@@ -112,9 +120,8 @@ function StoreData() {
     // Hier maak ik een object van de class user en ik noem hem hier: $user
     $user = new User($afdeling, $project, $datum, $uur);
 
-    $sql = "INSERT INTO `medewerker` (`afdeling`, `project_naam`, `datum`, `aantal_uren`) 
-    VALUES ($user->afdeling , $user->project, $user->datum , $user->uur)";
- 
+    $sql = "INSERT INTO `medewerker` (`afdeling`, `project_naam`, `datum`, `aantal_uren`) VALUES ('$user->afdeling' , '$user->project', '$user->datum' , '$user->uur')";
+
     // if the query to store is correct it will pass if not it will return an error to the user
     if ($conn->query($sql) != TRUE) {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -123,25 +130,22 @@ function StoreData() {
     $conn->close();
 }
 
-
 function DisplayData() {
     $conn = db();
 
     $sql = "SELECT * FROM `medewerker`";
 
     $result = $conn->query($sql);
-    
+
     if ($result->num_rows > 0) {
 
-      // output data of each row of your database
-      while($row = $result->fetch_assoc()) {
+        // output data of each row of your database
+        while($row = $result->fetch_assoc()) {
 
+            // admin table
 
-
-      }
+        }
     }
 
     $conn->close();
 }
-}
-

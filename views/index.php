@@ -29,31 +29,32 @@ session_destroy();
         <div class="login">
             <h1>Login</h1>
             <form action='../php/login.php' method="post">
-            <div class="txt_field">
-            <label>Email</label>
-                <input type="text" name="email">
-                <span></span>
-            </div>
-            <div class="txt_field">
-            <label>Password</label>
-                <input type="password" name="password">
-                <span></span>
-            </div>
-            <div class="error">
-            <?php
-                if(isset($_GET["error"])){
-                    if($_GET["error"]=="emptyinput"){
-                        echo "<div class='error'> <p class='error-message'>fill in all fields!</p> </div>";
-                     }
-                 else if ($_GET["error"]=="usernamenotfound"){
-                     echo "<div class='error'> <p class='error-message'>username not found!</p> </div>";
-                     }
-                    else if ($_GET["error"]=="wrongpassword"){
-                      echo "<div class='error'> <p class='error-message'>wrong password!</p> </div>";
-                     }
-                    }?>
+                <div class="txt_field">
+                <label>Email</label>
+                    <input type="text" name="email">
+                    <span></span>
                 </div>
-            <input type="submit" value="Login" name="submit">
+                <div class="txt_field">
+                <label>Password</label>
+                    <input type="password" name="password">
+                    <span></span>
+                </div>
+                <div class="error">
+                <?php
+                    if(isset($_GET["error"])) {
+                        if($_GET["error"] == "emptyinput") {
+                            echo "<div class='error'> <p class='error-message'>fill in all fields!</p> </div>";
+                        }
+                        else if ($_GET["error"] == "usernamenotfound") {
+                        echo "<div class='error'> <p class='error-message'>username not found!</p> </div>";
+                        }
+                        else if ($_GET["error"] == "wrongpassword") {
+                        echo "<div class='error'> <p class='error-message'>wrong password!</p> </div>";
+                        }
+                    }
+                        ?>
+                    </div>
+                <input type="submit" value="Login" name="submit">
             </form>     
         </div>
     </div>

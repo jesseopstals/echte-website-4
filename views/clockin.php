@@ -8,6 +8,7 @@ header("location:index.php");
 
 }
 
+// include "../php/functions.php";
 
 ?>
 
@@ -25,8 +26,8 @@ header("location:index.php");
 <body onload="startTime()">
     <nav>
         <ul>
-            <li ><a class="logout" href="../php/logout.php">logout</a></li> 
             <li><p id="clock" class="clock"></p></li>
+            <li ><a class="logout" href="../php/logout.php">logout</a></li> 
             <li><p id="date" class="date"></p></li>
         </ul>
     </nav>
@@ -35,7 +36,7 @@ header("location:index.php");
 
         <div class="login">
            <h1 style="padding: 1%">Clock in</h1>
-            <form>
+            <form method="POST" action="clockin.php">
                 <div style="display: flex;">
                     <div class="txt_field">
                         <label>Department</label>
@@ -51,7 +52,7 @@ header("location:index.php");
                 <div style="display: flex;">
                     <div class="txt_field">
                         <label>Date</label>
-                        <input type="Date" id="dateDB" name="date" >
+                        <input type="Date" id="dateDB" name="datum" >
                         <span></span>
                     </div>
                     <div class="txt_field">
@@ -61,6 +62,12 @@ header("location:index.php");
                     </div>
                 </div>
                 <input type="submit" value="Clock in" id="submit" name="submit">    
+                <?php
+                    include "../php/functions.php";
+                    if (isset($_POST["submit"])) {
+                        StoreData();
+                    }
+                ?>
             </form>
         </div>
 </div>
