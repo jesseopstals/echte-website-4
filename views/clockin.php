@@ -25,7 +25,7 @@ header("location:index.php");
 <body onload="startTime()">
     <nav>
         <ul>
-            <!-- <li ><a class="logout" href="../php/logout.php">logout</a></li> -->
+            <li ><a class="logout" href="../php/logout.php">logout</a></li> 
             <li><p id="clock" class="clock"></p></li>
             <li><p id="date" class="date"></p></li>
         </ul>
@@ -60,7 +60,7 @@ header("location:index.php");
                         <span></span>
                     </div>
                 </div>
-                <input value="Clock in" id="submit" name="submit">    
+                <input type="submit" value="Clock in" id="submit" name="submit">    
             </form>
         </div>
 </div>

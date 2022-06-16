@@ -75,16 +75,16 @@ class User {
 
     // Properties of what a user can have
     public $afdeling;
-    public $project_naam;
+    public $project;
     public $datum;
-    public $aantal_uur;
+    public $uur;
   
     // constructor so i can spare some lines of code
-    function __construct($afdeling, $project_naam, $datum, $aantal_uur) {
+    function __construct($afdeling, $project, $datum, $uur) {
         $this->afdeling = $afdeling;
-        $this->project_naam = $project_naam;
+        $this->project_naam = $project;
         $this->datum = $datum;
-        $this->aantal_uur = $aantal_uur;
+        $this->aantal_uur = $uur;
     }
 }
 
@@ -110,10 +110,10 @@ function StoreData() {
     $conn = db();
     
     // Hier maak ik een object van de class user en ik noem hem hier: $user
-    $user = new User($afdeling, $project_naam, $datum, $aantal_uur);
+    $user = new User($afdeling, $project, $datum, $uur);
 
     $sql = "INSERT INTO `medewerker` (`afdeling`, `project_naam`, `datum`, `aantal_uren`) 
-    VALUES ($user->afdeling , $user->project_naam , $user->datum , $user->aantal_uur)";
+    VALUES ($user->afdeling , $user->project, $user->datum , $user->uur)";
  
     // if the query to store is correct it will pass if not it will return an error to the user
     if ($conn->query($sql) != TRUE) {
@@ -144,3 +144,4 @@ function DisplayData() {
     $conn->close();
 }
 }
+
