@@ -114,15 +114,15 @@ function StoreData() {
     $uur = $_POST['uur'];
 
 
-    // use the connection in as an variable 
+    // gebruik de connectie als variabel
     $conn = db();
     
     // Hier maak ik een object van de class user en ik noem hem hier: $user
     $user = new User($afdeling, $project, $datum, $uur);
 
-    $sql = "INSERT INTO `medewerker` (`afdeling`, `project_naam`, `datum`, `aantal_uren`) VALUES ('$user->afdeling' , '$user->project', '$user->datum' , '$user->uur')";
+    $sql = "INSERT INTO `medewerker` (`afdeling`, `project`, `datum`, `uren`) VALUES ('$user->afdeling' , '$user->project', '$user->datum' , '$user->uur')";
 
-    // if the query to store is correct it will pass if not it will return an error to the user
+    // if the query to store is correct it will pass if not it will return an error to the user als de query store als de query
     if ($conn->query($sql) != TRUE) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
