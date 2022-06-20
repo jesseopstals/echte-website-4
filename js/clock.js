@@ -32,7 +32,7 @@ function checkTime(i) {
 
 
 
-console.log("gdsgdfgfdhd")
+console.log("godod")
 let dateDB = document.getElementById("dateDB")
 const btn = document.getElementById("submit")
 

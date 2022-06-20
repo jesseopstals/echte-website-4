@@ -25,10 +25,10 @@ function uidExists($conn,$userName) {
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt,"s",$userName);             //zoekt ingevuled naam in database
-    mysqli_stmt_execute($stmt);                              //selecteert hele row
+    mysqli_stmt_bind_param($stmt,"s",$userName);             
+    mysqli_stmt_execute($stmt);                             //zoekt ingevuled naam in database
 
-    $resultData = mysqli_stmt_get_result($stmt);
+    $resultData = mysqli_stmt_get_result($stmt); //selecteert hele row
 
     if($row = mysqli_fetch_assoc($resultData)){           
         return $row;
@@ -61,6 +61,7 @@ function loginUser($conn,$userName,$pwd) {
     else if ($checkpwd === true) {
         session_start();
         $_SESSION['userid'] = $uidExists["id"];
+        $_SESSION['naam'] = $uidExists["naam"];
         $_SESSION['userName'] = $uidExists["email"];
         header("location:../views/clockin.php?");
         exit();
@@ -72,42 +73,25 @@ function loginUser($conn,$userName,$pwd) {
 
 
 //------------------------------------------------Register-----------------------------------------
-class User {
-
-    // Properties of what a user can have
-    public $afdeling;
-    public $project;
-    public $datum;
-    public $uur;
-
-    // constructor so i can spare some lines of code
-    function __construct($afdeling, $project, $datum, $uur) {
-        $this->afdeling = $afdeling;
-        $this->project_naam = $project;
-        $this->datum = $datum;
-        $this->aantal_uur = $uur;
-    }
-}
-
 function db() {
     $servername = "localhost";
-    $username = "root";
+    $usee = "root";
     $password = "";
     $dbname = "urenregistratiesysteem";
 
     // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $conn = new mysqli($servername, $usee, $password, $dbname);
 
     // Check connection
     if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     }
-
     return $conn;
 }
 
-function StoreData() {
+ 
 
+function StoreData($name,$email) {
     $afdeling = $_POST['afdeling'];
     $project = $_POST['project'];
     $datum = $_POST['datum'];
@@ -116,11 +100,10 @@ function StoreData() {
 
     // gebruik de connectie als variabel
     $conn = db();
-    
     // Hier maak ik een object van de class user en ik noem hem hier: $user
-    $user = new User($afdeling, $project, $datum, $uur);
 
-    $sql = "INSERT INTO `medewerker` (`afdeling`, `project`, `datum`, `uren`) VALUES ('$user->afdeling' , '$user->project', '$user->datum' , '$user->uur')";
+
+    $sql = "INSERT INTO `medewerker` (`naam`,`email`, `afdeling`, `project`, `datum`, `uren`) VALUES ('$name','$email','$afdeling' , '$project', '$datum' , '$uur')";
 
     // if the query to store is correct it will pass if not it will return an error to the user als de query store als de query
     if ($conn->query($sql) != TRUE) {

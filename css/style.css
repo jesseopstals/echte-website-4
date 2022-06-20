@@ -12,7 +12,6 @@
 }
 
 html, body{min-height:100%;}
-/* body{height:100vh;} */
 
 * {
   box-sizing: border-box;
@@ -74,16 +73,15 @@ body {
 }
 
 .container {
-  /* flex */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .container h1{
-  padding-top: 5%;
+  padding-top: 2%;
 }
 
 .login div div {
@@ -93,8 +91,6 @@ body {
 .login {
   box-shadow: var(--shadow-color);
   margin-top: 30px;
-  /*position: absolute; */
-  /* width: 500px; */
   background: white;
   color: var(--form-text);
   border-radius: 2%;
@@ -118,8 +114,6 @@ form .txt_field{
 
 .txt_field input{
   width: 100%;
-  /* padding: 0 5px; */
-  /* margin: 0 0 10px; */
   height: 50px;
   font-size: 16px;
   border: none;
@@ -127,22 +121,12 @@ form .txt_field{
   outline: none;
 }
 
-.txt_field label {
-  /* left: 5px; */
-  color: #adadad;
-  font-size: 16px;
-  pointer-events: none;
-  transition: .5s;
-}
 
 .txt_field span::before{
   content: '';
   position: absolute;
-  /* top: 100px; */
   left: 0;
   bottom: 0;
-  /* width: 0%; */
-  /* width: 10px; */
   height: 2px;
   background: #2691d9;
 }
