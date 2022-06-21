@@ -41,7 +41,7 @@
                             echo "<div class='error'> <p class='error-message'>fill in all fields!</p> </div>";
                         }
                         else if ($_GET["error"] == "usernamenotfound") {
-                        echo "<div class='error'> <p class='error-message'>username not found!</p> </div>";
+                        echo "<div class='error'> <p class='error-message'>email not found!</p> </div>";
                         }
                         else if ($_GET["error"] == "wrongpassword") {
                         echo "<div class='error'> <p class='error-message'>wrong password!</p> </div>";

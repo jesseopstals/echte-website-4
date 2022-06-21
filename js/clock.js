@@ -39,38 +39,6 @@ const btn = document.getElementById("submit")
 
 
 
-// btn.addEventListener("click",function(){
-// submitData()
-// $.ajax({
-//     type: "POST", //Methode = POST
-//     url: "../php/functions.php", //Doorsturen naar bestand of URL
-//     data:
-//     { date: dateDB,
-//     department: department,
-//     project: project,
-//     hours:hours},
-   
-//     dataType: "json",
-//     encode: true,
-//   }).done(function () {
-// 	  // Wanneer de code naar thanks.php is gestuurd, laat de gebruiker iets weten
-   
-// console.log("dkod")  
-// });
-// })
-
-
-// function submitData(){
-// let date = document.getElementById("dateDB").value;
-// let department  = document.getElementById("department").value;
-// let project  = document.getElementById("project").value;
-// let hours  = document.getElementById("hours").value;
-// console.log(date)
-// console.log(department)
-// console.log(project)
-// console.log(hours)
-// }
-
 
 
 

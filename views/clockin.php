@@ -32,24 +32,12 @@ session_start()
                 <div style="display: flex;">
                     <div class="txt_field">
                         <label>Department</label>
-                        <input type="text" name="afdeling">
-                        <!--<select name="afdeling">!-->
-                             <!--<option value="volvo">Volvo</option><!-->
-                             <!--<option value="saab">Saab</option><!-->
-                             <!--<option value="mercedes">Mercedes</option><!-->
-                              <!--<option value="audi">Audi</option><!-->
-                         <!--</select><!-->                  
+                        <input type="text" name="afdeling">                 
                         <span></span>
                     </div>
                     <div class="txt_field">
                         <label>Project</label>
                         <input type="text" name="project">
-                        <!--<select name="afdeling">!-->
-                            <!--<option value="volvo">Volvo</option>!-->
-                            <!--<option value="saab">Saab</option>!-->
-                            <!--<option value="mercedes">Mercedes</option>!-->
-                            <!--<option value="audi">Audi</option>!-->
-                        <!--</select>!-->
                         <span></span>
                     </div>
                 </div>
@@ -83,7 +71,7 @@ session_start()
                 <input type="submit" value="Clock in" id="submit" name="submit">    
                 <?php
                     include "../php/functions.php";
-                    if (isset($_POST["submit"])) {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         StoreData($_SESSION['naam'],$_SESSION['userName']);
                     }
                 ?>

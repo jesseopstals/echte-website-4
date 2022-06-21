@@ -59,12 +59,26 @@ function loginUser($conn,$userName,$pwd) {
         exit();
     }
     else if ($checkpwd === true) {
+        if( $uidExists["rang"] == "admin") {
         session_start();
         $_SESSION['userid'] = $uidExists["id"];
         $_SESSION['naam'] = $uidExists["naam"];
         $_SESSION['userName'] = $uidExists["email"];
-        header("location:../views/clockin.php?");
+        header("location:../views/admin.php");
         exit();
+       }
+        if( $uidExists["rang"] == "user") { 
+        session_start();
+      $_SESSION['userid'] = $uidExists["id"];
+        $_SESSION['naam'] = $uidExists["naam"];
+       $_SESSION['userName'] = $uidExists["email"];
+       header("location:../views/clockin.php");
+       exit();
+    }
+       
+      else{
+        header("location:../views/clockin.php?");
+      }
  }
 }
 
@@ -75,14 +89,14 @@ function loginUser($conn,$userName,$pwd) {
 //------------------------------------------------Register-----------------------------------------
 function db() {
     $servername = "localhost";
-    $usee = "root";
+    $user = "root";
     $password = "";
     $dbname = "urenregistratiesysteem";
 
-    // Create connection
-    $conn = new mysqli($servername, $usee, $password, $dbname);
+    // Create connectie
+    $conn = new mysqli($servername, $user, $password, $dbname);
 
-    // Check connection
+    // Checkt connectie
     if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
     }
@@ -91,21 +105,23 @@ function db() {
 
  
 
-function StoreData($name,$email) {
+function StoreData() {
     $afdeling = $_POST['afdeling'];
     $project = $_POST['project'];
     $datum = $_POST['datum'];
     $uur = $_POST['uur'];
+   
+
 
 
     // gebruik de connectie als variabel
     $conn = db();
-    // Hier maak ik een object van de class user en ik noem hem hier: $user
+  
 
 
-    $sql = "INSERT INTO `medewerker` (`naam`,`email`, `afdeling`, `project`, `datum`, `uren`) VALUES ('$name','$email','$afdeling' , '$project', '$datum' , '$uur')";
+    $sql = "INSERT INTO `urengegevens` (`afdeling`, `project`, `datum`, `uren`) VALUES ('$afdeling' , '$project', '$datum' , '$uur')";
 
-    // if the query to store is correct it will pass if not it will return an error to the user als de query store als de query
+   // Als de query goed is opgeslagen gaat die door anders krijg je een error
     if ($conn->query($sql) != TRUE) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

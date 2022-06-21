@@ -3,8 +3,6 @@
 if(isset($_POST["submit"])){ 
     $userName = $_POST['email'];
     $pwd = $_POST['password'];
-    session_start();
-    $_SESSION['usernameecht'] = $userName;
     require "functions.php";
     require "db.connection.php";
 
