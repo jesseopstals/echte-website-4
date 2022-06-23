@@ -19,7 +19,7 @@
     </nav>
    <div class="container">
       <h1>Admin page, here you can see everyone's work!</h1>
-      <table style="overflow-x: auto; background: white; width: 60%; margin-top: 4%; border-radius: 0px;">
+      <table style="overflow-x: auto; background: white; width: 50%; margin-top: 4%; border-radius: 0px;">
             <tr>
                <th>ID</th>
                <th>Department</th>
