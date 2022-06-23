@@ -26,7 +26,7 @@ session_start()
         </ul>
     </nav>
     <div class="container">
-        <h1>Welcome, <br> Register your work here! </h1>
+        <h1>Welcome, <br> Register your work here!</h1>
 
         <div class="login">
            <h1 style="padding: 1%">Register</h1>
@@ -73,6 +73,5 @@ session_start()
             </form>
         </div>
 </div>
-
 </body>
 </html>
