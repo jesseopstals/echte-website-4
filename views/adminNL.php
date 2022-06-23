@@ -20,13 +20,13 @@
    <div class="container">
       <h1>Admin page, here you can see everyone's work!</h1>
       <div class="login">
-         <table >
+      <table style="overflow-x: auto; background: white; width: 60%; margin-top: 4%; border-radius: 0px;">
             <tr>
                <th>ID</th>
-               <th>Afdeling</th>
+               <th>Department</th>
                <th>Project</th>
-               <th>Datum</th>
-               <th>Uren</th>
+               <th>Date</th>
+               <th>Hours</th>
             </tr>
 
             <?php
