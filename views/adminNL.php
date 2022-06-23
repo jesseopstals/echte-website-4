@@ -13,19 +13,20 @@
         <ul>
             <li><p id="clock" class="clock"></p></li>
             <li><p id="date" class="date"></p></li>
-            <li><a href="adminNL.php">Nederlands</a></li>
+            <li><a href="admin.php">English</a></li>
             <li ><a class="logout" href="../php/logout.php">logout</a></li> 
         </ul>
     </nav>
    <div class="container">
       <h1>Admin page, here you can see everyone's work!</h1>
-      <table style="overflow-x: auto; background: white; width: 60%; margin-top: 4%; border-radius: 0px;">
+      <div class="login">
+         <table >
             <tr>
                <th>ID</th>
-               <th>Department</th>
+               <th>Afdeling</th>
                <th>Project</th>
-               <th>Date</th>
-               <th>Hours</th>
+               <th>Datum</th>
+               <th>Uren</th>
             </tr>
 
             <?php
@@ -33,6 +34,7 @@
                DisplayData();
             ?>
          </table>
+      </div>
    </div>
 </body>
 </html>

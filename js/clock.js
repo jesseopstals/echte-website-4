@@ -24,17 +24,11 @@ function startTime() {
 
 
 function checkTime(i) {
-    // checken als het getal 10 is anders komt er een 0 achter het getal
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    // als getal kleiner is dan 10 komt er een 0 voor
+    if (i < 10) {i = "0" + i};  
     return i;
 }
 
-
-
-
-console.log("godod")
-let dateDB = document.getElementById("dateDB")
-const btn = document.getElementById("submit")
 
 
 

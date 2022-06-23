@@ -28,7 +28,7 @@ function uidExists($conn,$userName) {
     mysqli_stmt_bind_param($stmt,"s",$userName);             
     mysqli_stmt_execute($stmt);                             //zoekt ingevuled naam in database
 
-    $resultData = mysqli_stmt_get_result($stmt); //selecteert hele row
+    $resultData = mysqli_stmt_get_result($stmt);            //selecteert hele row
 
     if($row = mysqli_fetch_assoc($resultData)){           
         return $row;
@@ -75,10 +75,6 @@ function loginUser($conn,$userName,$pwd) {
        header("location:../views/clockin.php");
        exit();
     }
-       
-      else{
-        header("location:../views/clockin.php?");
-      }
  }
 }
 
@@ -106,6 +102,7 @@ function db() {
  
 
 function StoreData() {
+    $user_id = $_SESSION['userid'];
     $afdeling = $_POST['afdeling'];
     $project = $_POST['project'];
     $datum = $_POST['datum'];
@@ -114,7 +111,7 @@ function StoreData() {
     // gebruik de connectie als variabel
     $conn = db();
 
-    $sql = "INSERT INTO `urengegevens` (`afdeling`, `project`, `datum`, `uren`) VALUES ('$afdeling' , '$project', '$datum' , '$uur')";
+    $sql = "INSERT INTO `urengegevens`(`user_id`, `afdeling`, `project`, `datum`, `uren`) VALUES ('$user_id', '$afdeling' , '$project', '$datum' , '$uur')";
 
    // Als de query goed is opgeslagen gaat die door anders krijg je een error
     if ($conn->query($sql) != TRUE) {
@@ -136,8 +133,8 @@ function DisplayData() {
         // output data of each row of your database
         while($row = $result->fetch_assoc()) {
 
-            //  `afdeling`, `project`, `datum`, `uren`
-            echo "<tr><td>" . $row["afdeling"] . " - " . $row["project"] . " - " . $row["datum"] . " - " . $row["uren"] . "</td></tr>";
+            
+            echo "<tr><td>" . $row["user_id"] . "</td><td>" . $row["afdeling"] . "</td><td>" . $row["project"] . "</td><td>" . $row["datum"] . "</td><td>" . $row["uren"] . "</td></tr>" ;
 
         }
     }

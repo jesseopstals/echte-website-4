@@ -15,12 +15,12 @@
     <nav>
         <ul>
             <li><p id="clock" class="clock"></p></li>
-            <li><a href="loginNL.php">Nederlands</a></li>
+            <li><a href="index.php">English</a></li>
             <li><p id="date" class="date"></p></li>
         </ul>
     </nav>
     <div class="container">
-        <h1>Welcome, <br> Login to register your work! </h1>
+        <h1>welkom, <br> login hier in om je werk te kunnen registreren</h1>
             <h1></h1>
         <div class="login">
             <h1>Login</h1>
@@ -31,7 +31,7 @@
                     <span></span>
                 </div>
                 <div class="txt_field">
-                <label>Password</label>
+                <label>Wachtwoord</label>
                     <input type="password" name="password">
                     <span></span>
                 </div>
@@ -54,9 +54,6 @@
             </form>     
         </div>
     </div>
-
-
- 
 </body>
 
 
