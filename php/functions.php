@@ -69,9 +69,9 @@ function loginUser($conn,$userName,$pwd) {
        }
         if( $uidExists["rang"] == "user") { 
         session_start();
-      $_SESSION['userid'] = $uidExists["id"];
+        $_SESSION['userid'] = $uidExists["id"];
         $_SESSION['naam'] = $uidExists["naam"];
-       $_SESSION['userName'] = $uidExists["email"];
+        $_SESSION['userName'] = $uidExists["email"];
        header("location:../views/clockin.php");
        exit();
     }
@@ -110,14 +110,9 @@ function StoreData() {
     $project = $_POST['project'];
     $datum = $_POST['datum'];
     $uur = $_POST['uur'];
-   
-
-
 
     // gebruik de connectie als variabel
     $conn = db();
-  
-
 
     $sql = "INSERT INTO `urengegevens` (`afdeling`, `project`, `datum`, `uren`) VALUES ('$afdeling' , '$project', '$datum' , '$uur')";
 
@@ -132,7 +127,7 @@ function StoreData() {
 function DisplayData() {
     $conn = db();
 
-    $sql = "SELECT * FROM `medewerker`";
+    $sql = "SELECT * FROM `urengegevens`";
 
     $result = $conn->query($sql);
 
@@ -141,7 +136,8 @@ function DisplayData() {
         // output data of each row of your database
         while($row = $result->fetch_assoc()) {
 
-            // admin table
+            //  `afdeling`, `project`, `datum`, `uren`
+            echo "<tr><td>" . $row["afdeling"] . " - " . $row["project"] . " - " . $row["datum"] . " - " . $row["uren"] . "</td></tr>";
 
         }
     }

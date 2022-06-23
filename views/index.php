@@ -20,7 +20,7 @@
     </nav>
     <div class="container">
         <h1>Welcome, <br> Login to register your work! </h1>
-
+            <h1></h1>
         <div class="login">
             <h1>Login</h1>
             <form action='../php/login.php' method="post">
