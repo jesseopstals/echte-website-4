@@ -56,20 +56,19 @@ session_start()
                 </div>
                 <div class="error">
                 <?php
-                    if(isset($_GET["error"])) {
-                        if($_GET["error"] == "emptyinput") {
-                            echo "<div class='error'> <p class='error-message'>fill in all fields!</p> </div>";
-                            }
-                        }   
-                        ?>
-                    </div>
-                <input type="submit" value="Clock in" id="submit" name="submit">    
-                <?php
                     include "../php/functions.php";
+
+                    if(isset($_POST["submit"]) && $_POST['uur'] == null) {
+                        echo "<div class='error'> <p class='error-message'>fill in all fields!</p> </div>";
+                        die();
+                    }
+
                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                        StoreData($_SESSION['naam'],$_SESSION['userName']);
+                        StoreData($_SESSION['naam'], $_SESSION['userName']);
                     }
                 ?>
+                    </div>
+                <input type="submit" value="Clock in" id="submit" name="submit">    
             </form>
         </div>
 </div>

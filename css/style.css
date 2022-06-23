@@ -67,7 +67,6 @@ li a:hover {
 
 
 body {
-  background-repeat: nrepeat-x;
   font-family: var(--body-font);
   background: linear-gradient(0deg, rgba(38,145,217,1) 0%, rgba(45,253,230,1) 100%);
   color: var(--nav-color); 

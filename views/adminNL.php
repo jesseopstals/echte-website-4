@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/clock.js"></script>   
-	<title>Document</title>
+	<title>Overzicht</title>
 </head>
 <body onload="startTime()">
     <nav>
@@ -14,18 +14,18 @@
             <li><p id="clock" class="clock"></p></li>
             <li><p id="date" class="date"></p></li>
             <li><a href="admin.php">English</a></li>
-            <li ><a class="logout" href="../php/logout.php">logout</a></li> 
+            <li ><a class="logout" href="../php/logout.php">uitloggen</a></li> 
         </ul>
     </nav>
    <div class="container">
-      <h1>Admin page, here you can see everyone's work!</h1>
+      <h1>Admin pagina, hier kunt u alle gebruiker gegevens zien</h1>
       <table style="overflow-x: auto; background: white; width: 50%; margin-top: 4%; border-radius: 0px;">
             <tr>
                <th>ID</th>
-               <th>Department</th>
+               <th>Afdeling</th>
                <th>Project</th>
-               <th>Date</th>
-               <th>Hours</th>
+               <th>Datum</th>
+               <th>Uren</th>
             </tr>
 
             <?php
