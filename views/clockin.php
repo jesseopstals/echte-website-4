@@ -57,7 +57,7 @@ session_start()
                 </div>
                 <div class="error">
                     </div>
-                <input type="submit" value="Clock in" id="submit" name="submit">    
+                <input type="submit" value="Send" id="submit" name="submit">    
                 <?php
                     include "../php/functions.php";
 

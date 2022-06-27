@@ -68,7 +68,7 @@ session_start()
                     }
                 ?>
                     </div>
-                <input type="submit" value="Clock in" id="submit" name="submit">    
+                <input type="submit" value="Verzenden" id="submit" name="submit">    
             </form>
         </div>
 </div>
